@@ -10,7 +10,7 @@ A configurable 2-D grid world with six classic search algorithms and
 
 ### Option A – Web version (GitHub Pages)
 
-Open [**the live demo**](https://YOUR_USERNAME.github.io/YOUR_REPO/web/)
+Open [**the live demo**](https://shailendrasekhar.github.io/DiscretePlanning/web/)
 or serve locally:
 
 ```bash
