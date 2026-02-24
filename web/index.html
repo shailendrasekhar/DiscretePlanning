@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discrete Planning – Grid Path-Finding</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Discrete Planning – Grid Path-Finding</h1>
+    <p class="subtitle">Live animated search visualisation</p>
+  </header>
+
+  <main>
+    <!-- ─── Controls Panel ─── -->
+    <aside id="controls">
+      <section>
+        <h2>Algorithm</h2>
+        <select id="algorithm">
+          <option value="bfs">BFS</option>
+          <option value="dfs">DFS</option>
+          <option value="best_first">Best-First (Greedy)</option>
+          <option value="dijkstra">Dijkstra</option>
+          <option value="astar" selected>A*</option>
+          <option value="jps">JPS (8-connected)</option>
+        </select>
+      </section>
+
+      <section>
+        <h2>Grid</h2>
+        <label>Rows <input id="rows" type="number" min="2" max="80" value="20" /></label>
+        <label>Cols <input id="cols" type="number" min="2" max="80" value="20" /></label>
+      </section>
+
+      <section>
+        <h2>Start <span class="hint">(row, col)</span></h2>
+        <label>Row <input id="startRow" type="number" min="0" value="0" /></label>
+        <label>Col <input id="startCol" type="number" min="0" value="0" /></label>
+      </section>
+
+      <section>
+        <h2>Goal <span class="hint">(row, col)</span></h2>
+        <label>Row <input id="goalRow" type="number" min="0" value="19" /></label>
+        <label>Col <input id="goalCol" type="number" min="0" value="19" /></label>
+      </section>
+
+      <section>
+        <h2>Obstacles</h2>
+        <label>Percentage <input id="obstaclePct" type="number" min="0" max="0.99" step="0.01" value="0.20" /></label>
+        <label>Seed <input id="seed" type="number" value="" placeholder="random" /></label>
+      </section>
+
+      <section>
+        <h2>Animation</h2>
+        <label>Speed (ms/step) <input id="delay" type="number" min="0" max="500" value="30" /></label>
+        <label>Steps/frame <input id="stepsPerFrame" type="number" min="1" max="100" value="1" /></label>
+        <label>Path delay (ms) <input id="pathDelay" type="number" min="0" max="500" value="50" /></label>
+      </section>
+
+      <div class="button-row">
+        <button id="btnRun" class="primary">▶ Run</button>
+        <button id="btnStop">■ Stop</button>
+        <button id="btnReset">↺ Reset</button>
+      </div>
+
+      <div id="status" class="status">Ready</div>
+
+      <!-- ─── Legend ─── -->
+      <section class="legend">
+        <h2>Legend</h2>
+        <ul>
+          <li><span class="swatch" style="background:#fff;border:1px solid #ccc"></span> Free</li>
+          <li><span class="swatch" style="background:#282828"></span> Obstacle</li>
+          <li><span class="swatch" style="background:#32cd32"></span> Start</li>
+          <li><span class="swatch" style="background:#ff6347"></span> Goal</li>
+          <li><span class="swatch" style="background:#add8e6"></span> Visited</li>
+          <li><span class="swatch" style="background:#ffa500"></span> Frontier</li>
+          <li><span class="swatch" style="background:#ff0"></span> Current</li>
+          <li><span class="swatch" style="background:#1e90ff"></span> Path</li>
+        </ul>
+      </section>
+    </aside>
+
+    <!-- ─── Canvas ─── -->
+    <div id="canvas-wrapper">
+      <canvas id="gridCanvas"></canvas>
+    </div>
+  </main>
+
+  <footer>
+    <p>Discrete Planning Lecture Demo &middot;
+       <a href="https://github.com/" target="_blank">Source on GitHub</a></p>
+  </footer>
+
+  <script src="grid.js"></script>
+  <script src="algorithms.js"></script>
+  <script src="visualiser.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

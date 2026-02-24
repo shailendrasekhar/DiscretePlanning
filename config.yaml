@@ -1,0 +1,52 @@
+# ===================================================================
+# Grid Planner Configuration
+# ===================================================================
+
+# --- Algorithm to use -----------------------------------------------
+# Options: bfs, dfs, best_first, dijkstra, astar, jps
+algorithm: astar
+
+# --- Grid dimensions ------------------------------------------------
+grid:
+  rows: 20
+  cols: 20
+
+# --- Start and goal cells (row, col) --------------------------------
+start: [0, 0]
+goal: null          # null → defaults to bottom-right corner
+
+# --- Obstacles ------------------------------------------------------
+obstacles:
+  percentage: 0.20  # fraction of cells that are obstacles [0, 1)
+  seed: null        # random seed for reproducible layouts (null = random)
+
+# --- Visualisation (pygame) -----------------------------------------
+visualisation:
+  cell_size: 30             # pixels per cell
+  grid_line_width: 1        # pixel width of grid lines
+
+  # --- Colours (R, G, B) --------------------------------------------
+  colours:
+    background: [255, 255, 255]     # white
+    obstacle:   [40,  40,  40]      # near-black
+    start:      [50,  205, 50]      # limegreen
+    goal:       [255, 99,  71]      # tomato
+    visited:    [173, 216, 230]     # light blue
+    frontier:   [255, 165, 0]       # orange
+    current:    [255, 255, 0]       # yellow
+    path:       [30,  144, 255]     # dodgerblue
+    grid_line:  [200, 200, 200]     # light grey
+    text:       [255, 255, 255]     # white
+
+  # --- Labels --------------------------------------------------------
+  start_label: "S"
+  goal_label: "G"
+  font_size: 20               # scales with cell_size automatically
+
+  # --- Animation -----------------------------------------------------
+  animation:
+    steps_per_frame: 1         # cells expanded per render tick
+    delay_ms: 30               # milliseconds between frames
+    path_delay_ms: 50          # delay per cell when drawing final path
+    pause_before_close_ms: 3000  # pause after completion before auto-close
+
